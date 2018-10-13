@@ -25,14 +25,17 @@ Windows Toolkit
 
     Added by John Hammond. Credited repo is here: [https://github.com/absolomb/WindowsEnum](https://github.com/absolomb/WindowsEnum). Running the extended check may take a long time: `powershell -nologo -executionpolicy bypass -file WindowsEnum.ps1 extended`
 
+* [`DeepBlue.ps1`](DeepBlue.ps1)
+
+    Added by John Hammond. Credited repo is here: [https://github.com/sans-blue-team/DeepBlueCLI](https://github.com/sans-blue-team/DeepBlueCLI). Awesome utility for quickly scanning logs and finding trouble. Usage like: `.\DeepBlue.ps1 -log security` or `.\DeepBlue.ps1 -log system`
+
 * [`PoSH_R2.ps1`](PoSH_R2.ps1)
 
     Added by John Hammond. Credited repo is here: [https://github.com/WiredPulse/PoSh-R2](https://github.com/WiredPulse/PoSh-R2).  This tool is awesome, given a list of Windows IP addresses, it will use WMI to query Autorun entries , Disk info , Environment variables , Event logs (50 lastest) , Installed Software , Logon sessions , List of drivers , List of mapped network drives , List of running processes , Logged in user , Local groups , Local user accounts , Network configuration , Network connections , Patches , Scheduled tasks with AT command , Shares , Services , System Information. For easy viewing of results, you can run `(import-csv .<some_file.csv> | out-gridview`.
 
-* [`WN10_Stigs.ps1`](WN10_Stigs.ps1)
+* [`windows_7_stig.bat`](windows_7_stig.bat)
 
-    Added by John Hammond. A force-compliance script for Windows 10 Security Technical Implementation Guide. 
-
+    Added by John Hammond. A force-compliance script for Windows 7 Security Technical Implementation Guide. Just makes a ton of registry tweaks to harden the box.
 
 * [`WN10_Stigs.ps1`](WN10_Stigs.ps1)
 
