@@ -162,7 +162,5 @@ EOF
 
 
 
-
-
 # Restart the SSH server for all configuration file changes to be made...
 sudo service ssh restart
