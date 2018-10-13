@@ -4,18 +4,16 @@ echo "V-1075"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v "ShutdownWithoutLogon" /t REG_DWORD /d 1 /f
 
 
-echo "V-1084"
-reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Memory Management\" /v "ClearPageFileAtShutdown" /t REG_DWORD /d 0 /f
-
-
-echo "V-1085"
-reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v "Allocatefloppies" /t REG_SZ /d 0 /f
-
 echo "V-1090"
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v "CachedLogonsCount" /t REG_SZ /d 2 /f
 
+echo "V-1091"
+reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v "CrashOnAuditFail" /t REG_DWORD /d 0 /f
+
+
 echo "V-1093"
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\" /v "RestrictAnonymous" /t REG_DWORD /d 1 /f
+
 
 
 echo "V-1122"
@@ -25,6 +23,11 @@ reg add "HKCU\SOFTWARE\Policies\Microsoft\Windows\Control Panel\Desktop\" /v "Sc
 
 echo "V-1136"
 reg add "HKLM\System\CurrentControlSet\Services\LanManServer\Parameters\" /v "EnableForcedLogoff" /t REG_DWORD /d 1 /f
+
+
+echo "V-1139"
+reg add "HKLM\System\CurrentControlSet\Services\RasMan\Parameters\" /v "DisableSavePassword" /t REG_DWORD /d 1 /f
+
 
 echo "V-1141"
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters\" /v "EnablePlainTextPassword" /t REG_DWORD /d 0 /f
@@ -43,6 +46,16 @@ reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v "Di
 
 echo "V-1157"
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v "SCRemoveOption" /t REG_SZ /d 1 /f
+
+echo "V-1158"
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole\" /v "SetCommand" /t REG_DWORD /d 0 /f
+
+echo "V-1159"
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Setup\RecoveryConsole\" /v "SecurityLevel" /t REG_DWORD /d 0 /f
+
+
+echo "V-1160"
+reg add "HKLM\Software\Microsoft\Driver Signing\" /v "Policy" /t REG_BINARY /d 2 /f
 
 
 echo "V-1162"
@@ -85,11 +98,24 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedE
 echo "V-3340"
 reg add "HKLM\System\CurrentControlSet\Services\LanManServer\Parameters\" /v "NullSessionShares" /t REG_MULTI_SZ /d "" /f
 
+echo "V-3341"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "Shadow" /t REG_DWORD /d 0 /f
+
 echo "V-3343"
 reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fAllowToGetHelp" /t REG_DWORD /d 0 /f
 
 echo "V-3344"
 reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v "LimitBlankPasswordUse" /t REG_DWORD /d 1 /f
+
+echo "V-3348"
+reg add "HKLM\Software\Policies\Microsoft\Messenger\Client\" /v "PreventRun" /t REG_DWORD /d 1 /f
+
+echo "V-3349"
+reg add "HKLM\Software\Policies\Microsoft\Messenger\Client\" /v "PreventAutoRun" /t REG_DWORD /d 1 /f
+
+echo "V-3372"
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v "UndockWithoutLogon" /t REG_DWORD /d 0 /f
+
 
 echo "V-3373"
 reg add "HKLM\System\CurrentControlSet\Services\Netlogon\Parameters\" /v "MaximumPasswordAge" /t REG_DWORD /d 30 /f
@@ -121,8 +147,14 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0\" /v "NTLMMinClientSec
 echo "V-3383"
 reg add "HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\" /v "Enabled" /t REG_DWORD /d 1 /f
 
+echo "V-3384"
+reg add "HKLM\System\CurrentControlSet\Control\Lsa\" /v "NoDefaultAdminOwner" /t REG_DWORD /d 1 /f
+
 echo "V-3385"
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel\" /v "ObCaseInsensitive" /t REG_DWORD /d 1 /f
+
+echo "V-3449"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fSingleSessionPerUser" /t REG_DWORD /d 1 /f
 
 echo "V-3453"
 reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fPromptForPassword" /t REG_DWORD /d 1 /f
@@ -142,8 +174,13 @@ reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\system\" /v "Di
 echo "V-3470"
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\" /v "fAllowUnsolicited" /t REG_DWORD /d 0 /f
 
+echo "V-3471"
+reg add "HKLM\Software\Policies\Microsoft\PCHealth\ErrorReporting\" /v "DoReport" /t REG_DWORD /d 0 /f
+
+
 echo "V-3472"
 reg add "HKLM\Software\Policies\Microsoft\W32time\Parameters\" /v "Type" /t REG_SZ /d "NoSync" /f
+
 
 echo "V-3479"
 reg add "HKLM\System\CurrentControlSet\Control\Session Manager\" /v "SafeDllSearchMode" /t REG_DWORD /d 1 /f
@@ -151,11 +188,16 @@ reg add "HKLM\System\CurrentControlSet\Control\Session Manager\" /v "SafeDllSear
 echo "V-3480"
 reg add "HKLM\Software\Policies\Microsoft\WindowsMediaPlayer\" /v "DisableAutoupdate" /t REG_DWORD /d 1 /f
 
+echo "V-3481"
+reg add "HKCU\Software\Policies\Microsoft\WindowsMediaPlayer\" /v "PreventCodecDownload" /t REG_DWORD /d 1 /f
+
+
 echo "V-3666"
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0\" /v "NTLMMinServerSec" /t REG_DWORD /d 0x20080000 /f
 
 echo "V-4108"
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Eventlog\Security\" /v "WarningLevel" /t REG_DWORD /d 0x0000005a /f
+
 
 echo "V-4110"
 reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\" /v "DisableIPSourceRouting" /t REG_DWORD /d 2 /f
@@ -173,14 +215,27 @@ reg add "HKLM\System\CurrentControlSet\Services\Tcpip\Parameters\" /v "KeepAlive
 echo "V-4116"
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Netbt\Parameters\" /v "NoNameReleaseOnDemand" /t REG_DWORD /d 1 /f
 
+echo "V-4407"
+reg add "HKLM\System\CurrentControlSet\Services\NTDS\Parameters\" /v "LDAPServerIntegrity" /t REG_DWORD /d 2 /f
+
+
 echo "V-4438"
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\" /v "TcpMaxDataRetransmissions" /t REG_DWORD /d 3 /f
 
 echo "V-4442"
 reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v "ScreenSaverGracePeriod" /t REG_SZ /d 5 /f
 
-echo "V-4443"
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurePipeServers\Winreg\AllowedPaths\" /v "Machine" /t REG_MULTI_SZ /d "" /f
+
+echo "V-4444"
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Cryptography\" /v "ForceKeyProtection" /t REG_SZ /d 2 /f
+
+echo "V-4445"
+reg add "HKLM\System\CurrentControlSet\Control\Session Manager\Subsystems\" /v "Optional" /t REG_MULTI_SZ /d "" /f
+
+
+echo "V-4447"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fEncryptRPCTraffic" /t REG_DWORD /d 1 /f
+
 
 echo "V-4448"
 reg add "HKLM\Software\Policies\Microsoft\Windows\Group Policy\{35378EAC-683F-11D2-A89A-00C04FBBCFA2}" /v "NoGPOListChanges" /t REG_DWORD /d 0 /f
@@ -197,8 +252,17 @@ reg add "HKLM\System\CurrentControlSet\Services\LanManServer\Parameters\" /v "Re
 echo "V-6834"
 reg add "HKLM\System\CurrentControlSet\Services\LanManServer\Parameters\" /v "RestrictNullSessAccess" /t REG_DWORD /d 1 /f
 
+echo "V-8322"
+reg add "HKLM\System\CurrentControlSet\Services\W32Time\TimeProviders\NtpClient\" /v "Enabled" /t REG_DWORD /d 1 /f
+reg add "HKLM\System\CurrentControlSet\Services\W32Time\Parameters\" /v "Type" /t REG_SZ /d NT5D5 /f
+
+
+echo "V-8324"
+reg add "HKLM\System\CurrentControlSet\Services\W32Time\Config\" /v "EventLogFlags" /t REG_DWORD /d 3 /f
+
 echo "V-11806"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v "DontDisplayLastUserName" /t REG_DWORD /d 1 /f
+
 
 echo "V-14228"
 reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v "AuditBaseObjects" /t REG_DWORD /d 0 /f
@@ -209,14 +273,8 @@ reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v "FullPrivilegeAuditing" /
 echo "V-14230"
 reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v "SCENoApplyLegacyAuditPolicy" /t REG_DWORD /d 1 /f
 
-echo "V-14230"
-reg add "HKLM\System\CurrentControlSet\Control\Lsa" /v "SCENoApplyLegacyAuditPolicy" /t REG_DWORD /d 1 /f
-
-echo "V-14231"
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\Lanmanserver\Parameters\" /v "Hidden" /t REG_DWORD /d 1 /f
-
 echo "V-14232"
-reg add "HKLM\System\CurrentControlSet\Services\IPSEC\" /v "NoDefaultExempt" /t REG_DWORD /d 1 /f
+reg add "HKLM\System\CurrentControlSet\Services\IPSEC\" /v "NoDefaultExempt" /t REG_DWORD /d 3 /f
 
 echo "V-14234"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v "FilterAdministratorToken" /t REG_DWORD /d 1 /f
@@ -254,11 +312,10 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\" /v "fDe
 echo "V-14249"
 reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fDisableCdm" /t REG_DWORD /d 1 /f
 
-echo "V-14253"
-reg add "HKLM\Software\Policies\Microsoft\Windows NT\Rpc\" /v "RestrictRemoteClients" /t REG_DWORD /d 1 /f
 
 echo "V-14256"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v "NoWebServices" /t REG_DWORD /d 1 /f
+
 
 echo "V-14259"
 reg add "HKLM\Software\Policies\Microsoft\Windows NT\Printers" /v "DisableHTTPPrinting" /t REG_DWORD /d 1 /f
@@ -268,6 +325,7 @@ reg add "HKLM\Software\Policies\Microsoft\Windows NT\Printers" /v "DisableWebPnP
 
 echo "V-14261"
 reg add "HKLM\Software\Policies\Microsoft\Windows\DriverSearching" /v "DontSearchWindowsUpdate" /t REG_DWORD /d 1 /f
+
 
 echo "V-14268"
 reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments\" /v "SaveZoneInformation" /t REG_DWORD /d 2 /f
@@ -284,17 +342,30 @@ reg add "HKLM\Software\Policies\Microsoft\Peernet\" /v "Disabled" /t REG_DWORD /
 echo "V-15667"
 reg add "HKLM\Software\Policies\Microsoft\Windows\Network Connections\" /v "NC_AllowNetBridge_NLA" /t REG_DWORD /d 0 /f
 
+echo "V-15669"
+reg add "HKLM\Software\Policies\Microsoft\Windows\Network Connections\" /v "NC_ShowSharedAccessUI" /t REG_DWORD /d 0 /f
+
+
+echo "V-15670"
+reg add "HKLM\Software\Policies\Microsoft\PCHealth\ErrorReporting\" /v "ShowUI" /t REG_DWORD /d 0 /f
+
+echo "V-15671"
+reg add "HKLM\Software\Policies\Microsoft\SystemCertificates\AuthRoot\" /v "DisableRootAutoUpdate" /t REG_DWORD /d 1 /f
+
+
 echo "V-15672"
 reg add "HKLM\Software\Policies\Microsoft\EventViewer\" /v "MicrosoftEventVwrDisableLinks" /t REG_DWORD /d 0 /f
+
 
 echo "V-15674"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\" /v "NoInternetOpenWith" /t REG_DWORD /d 1 /f
 
+echo "V-15675"
+reg add "HKLM\Software\Policies\Microsoft\Windows\Registration Wizard Control\" /v "NoRegistration" /t REG_DWORD /d 1 /f
+
+
 echo "V-15676"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\" /v "NoOnlinePrintsWizard" /t REG_DWORD /d 1 /f
-
-echo "V-15680"
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v "LogonType" /t REG_DWORD /d 0 /f
 
 echo "V-15682"
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Internet Explorer\Feeds\" /v "DisableEnclosureDownload" /t REG_DWORD /d 1 /f
@@ -313,6 +384,7 @@ reg add "HKLM\Software\Policies\Microsoft\Windows\Installer\" /v "DisableLUAPatc
 
 echo "V-15687"
 reg add "HKLM\Software\Policies\Microsoft\WindowsMediaPlayer\" /v "GroupPrivacyAcceptance" /t REG_DWORD /d 1 /f
+
 
 echo "V-15696"
 reg add "HKLM\Software\Policies\Microsoft\Windows\LLTD\" /v "AllowLLTDIOOndomain" /t REG_DWORD /d 0 /f
@@ -364,35 +436,33 @@ reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "Log
 echo "V-15709"
 reg add "HKLM\Software\Policies\Microsoft\Windows\GameUX\" /v "DownloadGameInfo" /t REG_DWORD /d 0 /f
 
-echo "V-15711"
-reg add "HKLM\Software\Policies\Microsoft\Windows\Windows Search\" /v "AllowIndexingEncryptedStoresOrItems" /t REG_DWORD /d 0 /f
-
-echo "V-15712"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search\" /v "PreventIndexingUncachedExchangeFolders" /t REG_DWORD /d 1 /f
-
-echo "V-15713"
-reg add "HKLM\Software\Policies\Microsoft\Windows Defender\Spynet\" /v "SpyNetReporting" /t REG_DWORD /d 0 /f
-
 echo "V-15718"
 reg add "HKLM\Software\Policies\Microsoft\Windows\Explorer\" /v "NoHeapTerminationOnCorruption" /t REG_DWORD /d 0 /f
 
 echo "V-15722"
 reg add "HKLM\Software\Policies\Microsoft\WMDRM\" /v "DisableOnline" /t REG_DWORD /d 1 /f
 
-echo "V-15724"
-reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar\" /v "TurnOffSidebar" /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar\" /v "TurnOffUnsignedGadgets" /t REG_DWORD /d 1 /f
-
-echo "V-15725"
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar\" /v "TurnOffSidebar" /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar\" /v "OverrideMoreGadgetsLink" /t REG_SZ /d "about:blank" /f
-
-echo "V-15726"
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar\" /v "TurnOffSidebar" /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Windows\Sidebar\" /v "TurnOffUserInstalledGadgets" /t REG_DWORD /d 1 /f
 
 echo "V-15727"
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\" /v "NoInPlaceSharing" /t REG_DWORD /d 1 /f
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\" /v "NoInPlaceSharing" /t REG_DWORD /d 1 /f
+
+echo "V-15991"
+reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v "EnableUIADesktopToggle" /t REG_DWORD /d 0 /f
+
+echo "V-15997"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fDisableCcm" /t REG_DWORD /d 1 /f
+
+echo "V-15998"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fDisableLPT" /t REG_DWORD /d 1 /f
+
+echo "V-15999"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fDisablePNPRedir" /t REG_DWORD /d 1 /f
+
+echo "V-16000"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "fEnableSmartCard" /t REG_DWORD /d 1 /f
+
+echo "V-16001"
+reg add "HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services\" /v "RedirectOnlyDefaultClientPrinter" /t REG_DWORD /d 1 /f
 
 echo "V-16008"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v "ValidateAdminCodeSignatures" /t REG_DWORD /d 0 /f
@@ -407,11 +477,9 @@ reg add "HKLM\Software\Policies\Microsoft\Assistance\Client\1.0" /v "NoImplicitF
 echo "V-16048"
 reg add "HKLM\Software\Policies\Microsoft\Assistance\Client\1.0" /v "NoExplicitFeedback" /t REG_DWORD /d 1 /f
 
-echo "V-17373"
-reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\" /v "AllocateCDRoms" /t REG_SZ /d 0 /f
 
 echo "V-21950"
-reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\" /v "SmbServerNameHardeningLevel" /t REG_DWORD /d 1 /f
+reg add "HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\" /v "SmbServerNameHardeningLevel" /t REG_DWORD /d 0 /f
 
 echo "V-21951"
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\LSA\" /v "UseMachineId" /t REG_DWORD /d 1 /f
@@ -479,11 +547,16 @@ reg add "HKLM\Software\Policies\Microsoft\Windows\Explorer\" /v "NoDataExecution
 echo "V-22692"
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\" /v "NoAutorun" /t REG_DWORD /d 1 /f
 
+
+
 echo "V-26283"
 reg add "HKLM\System\CurrentControlSet\Control\Lsa\" /v "RestrictAnonymousSAM" /t REG_DWORD /d 1 /f
 
 echo "V-26359"
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\" /v "LegalNoticeCaption" /t REG_SZ /d "Notice and Consent Banner" /f
+
+
+
 
 echo "V-26575"
 reg add "HKLM\Software\Policies\Microsoft\Windows\TCPIP\v6Transition\" /v "6to4_State" /t REG_SZ /d "Disabled" /f
@@ -509,93 +582,15 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\Setup\" /v "MaxSize" 
 echo "V-26582"
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\EventLog\System\" /v "MaxSize" /t REG_DWORD /d 0x00008000 /f
 
+
+echo "V-28504"
+reg add "HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings\" /v "DisableSendRequestAdditionalSoftwareToWER" /t REG_DWORD /d 1 /f
+
+
+
+
 echo "V-34974"
 reg add "HKLM\Software\Policies\Microsoft\Windows\Installer\" /v "AlwaysInstallElevated" /t REG_DWORD /d 0 /f
-
-echo "V-34979"
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v "LocalAccountTokenFilterPolicy" /t REG_DWORD /d 0x00000000 /f
-
-echo "V-34979"
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\" /v "LocalAccountTokenFilterPolicy" /t REG_DWORD /d 0x00000000 /f
-
-echo "V-36701"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\SysSettings\" /v "ASLR" /t REG_DWORD /d 3 /f
-
-echo "V-36702"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Internet Explorer\iexplore.exe" /t REG_SZ /d "+EAF+ eaf_modules:mshtml.dll;flash*.ocx;jscript*.dll;vbscript.dll;vgx.dll +ASR asr_modules:npjpi*.dll;jp2iexp.dll;vgx.dll;msxml4*.dll;wshom.ocx;scrrun.dll;vbscript.dll asr_zones:1;2" /f
-
-echo "V-36703"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Adobe\*\Reader\AcroRd32.exe" /t REG_SZ /d "+EAF+ eaf_modules:AcroRd32.dll;Acrofx32.dll;AcroForm.api" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Adobe\Acrobat*\Acrobat\Acrobat.exe" /t REG_SZ /d "EAF+ eaf_modules:AcroRd32.dll;Acrofx32.dll;AcroForm.api" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Java\jre*\bin\java.exe" /t REG_SZ /d "-HeapSpray" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Java\jre*\bin\javaw.exe" /t REG_SZ /d "-HeapSpray" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Java\jre*\bin\javaws.exe" /t REG_SZ /d "-HeapSpray" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\EXCEL.EXE" /t REG_SZ /d "+ASR asr_modules:flash*.ocx" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\INFOPATH.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\LYNC.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\MSACCESS.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\MSPUB.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\OIS.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\OUTLOOK.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\POWERPNT.EXE" /t REG_SZ /d "+ASR asr_modules:flash*.ocx" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\PPTVIEW.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\VISIO.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\VPREVIEW.EXE" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\OFFICE1*\WINWORD.EXEE" /t REG_SZ /d "+ASR asr_modules:flash*.ocx" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Windows NT\Accessories\wordpad.exe" /t REG_SZ /d "" /f
-
-
-echo "V-36704"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\7-Zip\7z.exe" /t REG_SZ /d "-EAF" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\7-Zip\7zG.exe" /t REG_SZ /d "-EAF" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\7-Zip\7zFM.exe" /t REG_SZ /d "-EAF" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Adobe\Adobe Photoshop CS*\Photoshop.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Foxit Reader\Foxit Reader.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Google\Chrome\Application\chrome.exe" /t REG_SZ /d "+EAF+ eaf_modules:chrome_child.dll" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Google\Google Talk\googletalk.exe" /t REG_SZ /d "-DEP" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\iTunes\iTunes.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Microsoft Lync\communicator.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\mIRC\mirc.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Mozilla Firefox\firefox.exe" /t REG_SZ /d "+EAF+ eaf_modules:mozjs.dll;xul.dll" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Mozilla Firefox\plugin-container.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Mozilla Thunderbird\plugin-container.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Mozilla Thunderbird\thunderbird.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Opera\*\opera.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Opera\opera.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Pidgin\pidgin.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\QuickTime\QuickTimePlayer.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Real\RealPlayer\realconverter.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Real\RealPlayer\realplay.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Safari\Safari.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\SkyDrive\SkyDrive.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Skype\Phone\Skype.exe " /t REG_SZ /d "-EAF" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\VideoLAN\VLC\vlc.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Winamp\winamp.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Windows Live\Mail\wlmail.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Windows Live\Photo Gallery\WLXPhotoGallery.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Windows Live\Writer\WindowsLiveWriter.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\Windows Media Player\wmplayer.exe" /t REG_SZ /d "-EAF -MandatoryASLR" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\WinRAR\rar.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\WinRAR\unrar.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\WinRAR\winrar.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\WinZip\winzip32.exe" /t REG_SZ /d "" /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\Defaults\" /v "*\WinZip\winzip64.exe" /t REG_SZ /d "" /f
-
-
-
-echo "V-36705"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\SysSettings\" /v "DEP" /t REG_DWORD /d 2 /f
-
-echo "V-36706"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\EMET\SysSettings\" /v "SEHOP" /t REG_DWORD /d 2 /f
-
-echo "V-367421"
-reg add "HKLM\SOFTWARE\Policies\Microsoft\TabletTip\1.7\" /v "PasswordSecurityState" /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\TabletTip\1.7\" /v "PasswordSecurity" /t REG_DWORD /d 5 /f
-
-
-echo "V-68847"
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel\" /v "DisableExceptionChainValidation" /t REG_DWORD /d 0 /f
 
 echo "V-72753"
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\Wdigest\" /v "UseLogonCredential" /t REG_DWORD /d 0x00000000 /f
@@ -607,6 +602,10 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters\" /v "SM
 echo "V-73523"
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\mrxsmb10\" /v "Start" /t REG_DWORD /d 0x00000004 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\" /v "DependOnService" /t REG_MULTI_SZ /d "Bowser" /f
+
+
+echo "V-80475"
+reg add "HKLM\SOFTWARE\ Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging\" /v "EnableScriptBlockLogging" /t REG_DWORD /d 0x00000001 /f
 
 
 echo "STIGs complete!"

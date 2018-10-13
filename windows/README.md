@@ -44,6 +44,10 @@ Do not forget to download and install EMET!
 
     Added by John Hammond. A force-compliance script for Windows 7 Security Technical Implementation Guide. Just makes a ton of registry tweaks to harden the box.
 
+* [`windows_2008_stig.bat`](windows_7_stig.bat)
+
+    Added by John Hammond. A force-compliance script for Windows Server 2008 R2 DC Security Technical Implementation Guide. Just makes a ton of registry tweaks to harden the box.
+
 * [`WN10_Stigs.ps1`](WN10_Stigs.ps1)
 
     Added by John Hammond. A force-compliance script for Windows 10 Security Technical Implementation Guide. Just makes a ton of registry tweaks to harden the box.
