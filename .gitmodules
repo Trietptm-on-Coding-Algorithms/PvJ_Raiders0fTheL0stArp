@@ -1,0 +1,3 @@
+[submodule "joomla/joomscan"]
+	path = joomla/joomscan
+	url = https://github.com/rezasp/joomscan
