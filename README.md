@@ -73,7 +73,9 @@ mail
 ```
 
 > A Windows Server 2008 acting as a Domain Controller
+>
 > Several Linux servers in multiple flavors: Ubuntu, CentOS, SuSE
+>
 > A number of Windows XP machines
 
 Priorities and Tools
@@ -110,6 +112,16 @@ General
 
 
 * Some scripts and resources are available here: [https://github.com/4ndronicus/pros-vs-joes](https://github.com/4ndronicus/pros-vs-joes).
+
+Domain Controller
+---------------------
+
+We do want to update PowerShell to version 5.1. 
+
+We will need the Windows Management Framework 5.1 to be able to do this. [https://www.microsoft.com/en-us/download/details.aspx?id=54616](https://www.microsoft.com/en-us/download/details.aspx?id=54616).
+
+To do that, we first need Microsoft .NET Framework 4.5.2. [https://www.microsoft.com/en-ca/download/confirmation.aspx?id=42642](https://www.microsoft.com/en-ca/download/confirmation.aspx?id=42642)
+
 
 DNS
 ----------
