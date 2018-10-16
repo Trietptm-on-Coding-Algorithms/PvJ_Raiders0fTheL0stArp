@@ -2,6 +2,13 @@ Windows Toolkit
 =======================
 
 Do not forget to download and install EMET!
+
+And check the PowerShell history file:
+
+```
+%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+```
+
 ---------
 
 * [`Sysinternals.zip`](Sysinternals.zip)

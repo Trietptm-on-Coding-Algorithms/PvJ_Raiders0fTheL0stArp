@@ -1,4 +1,4 @@
-#!/usr/env python
+#!/usr/bin/env python
 
 ###############################################################################################################
 ## [Title]: linuxprivchecker.py -- a Linux Privilege Escalation Check Script
@@ -48,7 +48,7 @@ def execCmd(cmdDict):
             results = out.split('\n')
     else: # older version of python, use os.popen
         echo_stdout = os.popen(cmd, 'r')  
-            results = echo_stdout.read().split('\n')
+        results = echo_stdout.read().split('\n')
         cmdDict[item]["results"]=results
     return cmdDict
 

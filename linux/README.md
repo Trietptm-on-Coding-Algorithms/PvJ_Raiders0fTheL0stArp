@@ -7,7 +7,7 @@ CentOS
 Installing `git`:
 
 ```
-yum update -y nss curl libcurl
+yum update -y nss curl libcurl git
 ```
 
 Files Information
