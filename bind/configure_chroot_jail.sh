@@ -83,8 +83,9 @@ acl "trusted" {
     // also prevents outside hosts from using our name server 
     // as a resolver for other domains. 
     172.16.137.0/24; 
+    172.16.137.30;
     localhost;
-
+    127.0.0.1; 
 };
 
 logging {
@@ -126,7 +127,8 @@ logging {
 
 options {
 
-    listen-on { 172.16.137.30; };
+    // listen-on { 172.16.137.30; };
+    listen-on { any; }; // Accept local connections too!
 
     directory       "/conf";
     pid-file        "/var/run/named.pid";
