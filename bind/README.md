@@ -107,3 +107,19 @@ options {
 ```
 
 > on an authoritative server, secure zone transfer and updates with TSIG (use the `tsig-keygen` utility)
+
+
+--------------------------
+
+This looks like a good resource: [http://www.cymru.com/Documents/secure-bind-template.html](http://www.cymru.com/Documents/secure-bind-template.html)
+
+
+---------------------------
+
+DNS File Structure
+==============
+
+* `named.conf`
+
+    This is the configuration file for the entire DNS service. It is where the hardening and protections should take place.
+
