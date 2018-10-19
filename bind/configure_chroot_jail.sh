@@ -144,7 +144,7 @@ options {
     notify no;
 
     // These are from the Men and Mice slideshare powerpoint.
-    dnssec-validation auto; // Checks with DNSSEC... may not work?
+    // dnssec-validation auto; // Checks with DNSSEC... may not work?
     minimal-responses yes;
     // minimal-any yes; // ENABLE if version 9.11 ...
 
