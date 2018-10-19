@@ -1,7 +1,8 @@
 #!/bin/bash
 
 
-if [ "$UID" != "0" ] then
+if [ "$UID" != "0" ]
+then
     echo "You must run this script as root!"
     exit
 fi
@@ -49,8 +50,10 @@ cp /etc/localtime etc
 # This is actively creating a symbolic link to a file that 
 # does not exists yet
 
-ln -s /chroot/named/etc/bind/named.conf /etc/named.conf
+ln -s /chroot/named/etc/named.conf /etc/named.conf
 
+# Get the rootcache file...
+dig +tcp @a.root-servers.net . ns > /chroot/named/conf/db.rootcache
 
 
 ##########################################
@@ -136,6 +139,12 @@ options {
     // before checking for updates). 
     notify no;
 
+    // These are from the Men and Mice slideshare powerpoint.
+    dnssec-validation auto; // Checks with DNSSEC... may not work?
+    minimal-responses yes;
+    minimal-any yes;
+
+
     // Generate more efficient zone transfers.  This will place 
     // multiple DNS records in a DNS message, instead of one per 
     // DNS message. 
@@ -190,7 +199,7 @@ view "internal-in" in {
     zone "." in { 
         // Link in the root server hint file. 
         type hint; 
-        file "db.root";
+        file "db.rootcache";
 
         // this is often seen to be "db.root" or "db.rootcache"
         //  or "db.cache" .... use what we have 
@@ -300,33 +309,34 @@ view "external-chaos" chaos {
     };
 };
 
-
-
-// ------------------------------------------
-// --- These are from the first article.
-
-
-// # The root nameservers
-// zone "." {
-//     type   hint;
-//     file   "db.rootcache";
-// };
-// 
-// # localhost - forward zone
-// zone    "localhost" {
-//     type    master;
-//     file   "db.localhost";
-//     notify  no;
-// };
-// 
-// # localhost - inverse zone
-// zone    "0.0.127.in-addr.arpa" {
-//     type   master;
-//     file   "db.127.0.0";
-//     notify no;
-// };
 EOF
 
+###################################################
+# Unsure if this is needed...
+# // ------------------------------------------
+# // --- These are from the first article.
+
+
+# // # The root nameservers
+# // zone "." {
+# //     type   hint;
+# //     file   "db.rootcache";
+# // };
+# // 
+# // # localhost - forward zone
+# // zone    "localhost" {
+# //     type    master;
+# //     file   "db.localhost";
+# //     notify  no;
+# // };
+# // 
+# // # localhost - inverse zone
+# // zone    "0.0.127.in-addr.arpa" {
+# //     type   master;
+# //     file   "db.127.0.0";
+# //     notify no;
+# // };
+###############################################
 
 ## Create the localhost files. These should not have to be touched
 cat << EOF >etc/db.localhost
@@ -420,6 +430,30 @@ ln -s /chroot/named/etc/rndc.conf /usr/local/etc/rndc.conf
 ln -s /chroot/named/etc/rndc.conf /etc/rndc.conf
 
 
+
+############ 
+#
+#
+# WE DO NEED TO UPDATE THE APPARMOR PERMISSIONS
+#
+# nano /etc/apparmor.d/usr.sbin.named
+# ##.. add under /etc/bind/** r,
+###              /chroot/named/** r,
+# service apparmor restart
+
+
+if [[ "$(grep '/chroot/named' /etc/apparmor.d/usr.sbin.named)" != "" ]]; 
+then 
+    # echo "its there"
+    echo "AppArmor has settings for it already."
+else
+    #echo "its not there"
+    sed -i 's|named {|named {\n  /chroot/named** rw,\n|g' /etc/apparmor.d/usr.sbin.named    
+fi
+
+# sed 's|named {|named {\n  /chroot/named** rw,\n|g' /etc/apparmor.d/usr.sbin.named
+
+
 ###### Next manage the permissions!
 
 #
@@ -488,4 +522,7 @@ chmod ug=rw,o=r   named.run
 PATH=/usr/local/sbin:$PATH named  \
         -t /chroot/named \
         -u named \
-        -c /etc/named.conf
+        -c /etc/named.conf \
+        -g \
+        -d 2 
+
