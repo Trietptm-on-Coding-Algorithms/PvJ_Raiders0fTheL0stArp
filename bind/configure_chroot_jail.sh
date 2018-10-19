@@ -233,10 +233,10 @@ view "internal-in" in {
        };
     };
 
-    zone "internal.example.com" in { 
+    zone "homelab.local" in { 
         // Our internal A RR zone. There may be several of these. 
         type master; 
-        file "master/db.internal"; 
+        file "master/db.homelab.local"; 
     };
 
     zone "1.168.192.in-addr.arpa" in { 
@@ -244,8 +244,6 @@ view "internal-in" in {
         type master; 
         file "master/db.192.168.1"; 
     };
-
-
 };
 
 
@@ -356,6 +354,7 @@ $TTL    86400
         IN A         127.0.0.1
 EOF
 
+# This is done for the CHAOS records. This should not be touched.
 cat << EOF > etc/db.bind
 ;
 ; @(#)db.bind v1.2 25 JAN 2001 Team Cymru Thomas noc@cymru.com 
@@ -375,7 +374,7 @@ authors.bind.   CHAOS  TXT "... or even Pros, for that matter!"
 EOF
 
 
-## Create the reverse pointer file for localhost.
+## Create the reverse pointer file for localhost. Should not be touched.
 cat << EOF >etc/db.127.0.0
 ;
 ; db.127.0.0
@@ -499,6 +498,103 @@ chmod ug=rwx,o=rx var/run/
 chown root:named  logs/
 chmod ug=rwx,o=rx logs/
 
+
+  # zone "0.0.127.in-addr.arpa" in { 
+  #       // Allow queries for the 127/8 network, but not zone transfers. 
+  #       // Every name server, both slave and master, will be a master 
+  #       // for this zone. 
+  #       type master; 
+  #       file "master/db.127.0.0";
+
+  #       allow-query { 
+  #           any; 
+  #       };
+
+  #       allow-transfer { 
+  #           none; 
+  #       }; 
+  #   };
+
+  #   zone "localhost" {
+  #      type master;
+  #      file "db.localhost";
+  #       allow-query { 
+  #           any; 
+  #       };
+
+  #       allow-transfer { 
+  #           none;
+  #      };
+  #   };
+
+  #   zone "internal.example.com" in { 
+  #       // Our internal A RR zone. There may be several of these. 
+  #       type master; 
+  #       file "master/db.internal"; 
+  #   };
+
+  #   zone "1.168.192.in-addr.arpa" in { 
+  #       // Our internal PTR RR zone. Again, there may be several of these. 
+  #       type master; 
+  #       file "master/db.192.168.1"; 
+  #   };
+
+
+########### Now trying to create A records... 
+# this needs to be updated
+
+cd etc
+mkdir master
+
+cat << EOF > /chroot/named/etc/master/db.homelab.local
+$TTL    604800
+@       IN      SOA     ns1.homelab.local. admin.homelab.local. (
+                              4         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+; name servers - NS records
+        IN      NS      ns1.homelab.local.
+        IN      NS      ns2.homelab.local.
+;
+; name servers - A records
+ns1.homelab.local.          IN      A       192.168.1.41  
+ns2.homelab.local.          IN      A       192.168.1.42  
+;
+; 10.1.100.0/24 - A records
+host1.homelab.local.        IN      A       192.168.1.90  
+host2.homelab.local.        IN      A       192.168.1.91  
+EOF
+
+
+
+cat << EOF > /chroot/named/etc/master/db.192.168.1
+$TTL    604800
+@       IN      SOA     ns1.homelab.local. admin.homelab.local. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+; name servers - NS records
+        IN      NS      ns1.homelab.local.
+        IN      NS      ns2.homelab.local.
+;
+; PTR Records
+41      IN      PTR     ns1.homelab.local.    ; 192.168.1.41  
+42      IN      PTR     ns2.homelab.local.    ; 10.192.168.1.42  
+90      IN      PTR     host1.homelab.local.  ; 192.168.1.90  
+91      IN      PTR     host2.homelab.local.  ; 192.168.1.91  
+EOF
+
+# ===================================================================
+#
+# This should be the last thing when running our script.
+
+
 ######## Starting the named server.
 #
 # We should always do this with script. NEVER use just `named`
@@ -526,4 +622,5 @@ PATH=/usr/local/sbin:$PATH named  \
         -c /etc/named.conf \
         -g \
         -d 2 
+
 
