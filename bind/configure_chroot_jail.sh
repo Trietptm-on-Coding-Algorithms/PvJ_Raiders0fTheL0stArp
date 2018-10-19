@@ -558,6 +558,10 @@ touch named.run
 chown named:named named.run
 chmod ug=rw,o=r   named.run
 
+
+# The -g means run in the foreground. It should be removed when trying this
+# for real.
+
 PATH=/usr/local/sbin:$PATH named  \
         -t /chroot/named \
         -u named \

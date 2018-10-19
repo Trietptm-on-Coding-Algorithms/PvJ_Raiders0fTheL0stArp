@@ -1,9 +1,15 @@
 BIND 9 Setup
 ==========
 
-Run `checksec` on `named` ??? 
 
----------------
+I've put together a `configure_chroot_jail.sh` script that works, but right now, it just uses the IP address information from the playground range. I still need to make it adaptible to a new environment.
+
+It is still a start, though!
+
+---------------------
+
+Adhoc Notes
+=======================
 
 Process Isolation
 --------------

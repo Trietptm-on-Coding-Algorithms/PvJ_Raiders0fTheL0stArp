@@ -55,6 +55,9 @@ Reading Resources
 Assumptions
 ---------------
 
+For Scoring, it seems for services that need authentication there should be a user `blueteam` with password `scorebot`?? May be necessary for FTP.
+
+
 Network blocks: _(this is according to the Red Cell, and may be our own blocks...)_
 
 
