@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [ "$UID" != "0" ]
 then
     echo "You must run this script as root!"
@@ -310,32 +309,9 @@ view "external-chaos" chaos {
 
 EOF
 
-###################################################
-# Unsure if this is needed...
-# // ------------------------------------------
-# // --- These are from the first article.
 
 
-# // # The root nameservers
-# // zone "." {
-# //     type   hint;
-# //     file   "db.rootcache";
-# // };
-# // 
-# // # localhost - forward zone
-# // zone    "localhost" {
-# //     type    master;
-# //     file   "db.localhost";
-# //     notify  no;
-# // };
-# // 
-# // # localhost - inverse zone
-# // zone    "0.0.127.in-addr.arpa" {
-# //     type   master;
-# //     file   "db.127.0.0";
-# //     notify no;
-# // };
-###############################################
+
 
 ## Create the localhost files. These should not have to be touched
 cat << EOF >etc/db.localhost
@@ -557,8 +533,8 @@ cat << EOF > /chroot/named/etc/master/db.homelab.local
                          604800 )       ; Negative Cache TTL
 ;
 ; name servers - NS records
-        IN      NS      ns1.homelab.local.
-        IN      NS      ns2.homelab.local.
+homelab.local.        IN      NS      ns1.homelab.local.
+homelab.local.        IN      NS      ns2.homelab.local.
 ;
 ; name servers - A records
 ns1.homelab.local.          IN      A       172.16.137.41  
@@ -623,5 +599,3 @@ PATH=/usr/local/sbin:$PATH named  \
         -c /etc/named.conf \
         -g \
         -d 2 
-
-
