@@ -263,7 +263,7 @@ view "external-in" in {
     // Link in our zones 
     zone "." in { 
         type hint; 
-        file "db.cache"; 
+        file "db.rootcache"; 
     };
     zone "example.net" in { 
         type master; 
@@ -448,6 +448,7 @@ then
     echo "AppArmor has settings for it already."
 else
     #echo "its not there"
+    echo "Adding the chroot into the AppArmor availability for the named user..."
     sed -i 's|named {|named {\n  /chroot/named** rw,\n|g' /etc/apparmor.d/usr.sbin.named    
 fi
 
