@@ -83,7 +83,7 @@ acl "trusted" {
     // intranet and DMZ clients may send DNS queries.  This 
     // also prevents outside hosts from using our name server 
     // as a resolver for other domains. 
-    192.168.1.0/24; 
+    172.16.137.0/24; 
     localhost;
 
 };
@@ -239,10 +239,11 @@ view "internal-in" in {
         file "master/db.homelab.local"; 
     };
 
-    zone "1.168.192.in-addr.arpa" in { 
+    //172.16.137.
+    zone "137.16.172.in-addr.arpa" in { 
         // Our internal PTR RR zone. Again, there may be several of these. 
         type master; 
-        file "master/db.192.168.1"; 
+        file "master/db.172.16.137"; 
     };
 };
 
@@ -560,17 +561,17 @@ cat << EOF > /chroot/named/etc/master/db.homelab.local
         IN      NS      ns2.homelab.local.
 ;
 ; name servers - A records
-ns1.homelab.local.          IN      A       192.168.1.41  
-ns2.homelab.local.          IN      A       192.168.1.42  
+ns1.homelab.local.          IN      A       172.16.137.41  
+ns2.homelab.local.          IN      A       172.16.137.42  
 ;
 ; 10.1.100.0/24 - A records
-host1.homelab.local.        IN      A       192.168.1.90  
-host2.homelab.local.        IN      A       192.168.1.91  
+host1.homelab.local.        IN      A       172.16.137.90  
+host2.homelab.local.        IN      A       172.16.137.91  
 EOF
 
 
 
-cat << EOF > /chroot/named/etc/master/db.192.168.1
+cat << EOF > /chroot/named/etc/master/db.172.16.137
 \$TTL    604800
 @       IN      SOA     ns1.homelab.local. admin.homelab.local. (
                               2         ; Serial
@@ -584,10 +585,10 @@ cat << EOF > /chroot/named/etc/master/db.192.168.1
         IN      NS      ns2.homelab.local.
 ;
 ; PTR Records
-41      IN      PTR     ns1.homelab.local.    ; 192.168.1.41  
-42      IN      PTR     ns2.homelab.local.    ; 10.192.168.1.42  
-90      IN      PTR     host1.homelab.local.  ; 192.168.1.90  
-91      IN      PTR     host2.homelab.local.  ; 192.168.1.91  
+41      IN      PTR     ns1.homelab.local.    ; 172.16.137.41  
+42      IN      PTR     ns2.homelab.local.    ; 172.16.137.42  
+90      IN      PTR     host1.homelab.local.  ; 172.16.137.90  
+91      IN      PTR     host2.homelab.local.  ; 172.16.137.91  
 EOF
 
 # ===================================================================
