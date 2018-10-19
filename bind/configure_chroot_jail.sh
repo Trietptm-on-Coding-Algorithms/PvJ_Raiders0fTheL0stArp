@@ -190,6 +190,11 @@ options {
 };
 
 
+// This supposedly will stop SERVFAIL by shrinking the packet size..?
+server 0.0.0.0/0 {
+    edns no;
+};
+
 view "internal-in" in { 
     // Our internal (trusted) view. We permit the internal networks 
     // to freely access this view. We perform recursion for our 
