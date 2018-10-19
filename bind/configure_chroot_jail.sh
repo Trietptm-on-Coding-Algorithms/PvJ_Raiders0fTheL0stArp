@@ -341,7 +341,7 @@ cat << EOF >etc/db.localhost
 ;
 ; db.localhost
 ;
-$TTL    86400
+\$TTL    86400
 
 @       IN SOA   @ root (
                         42              ; serial (d. adams)
@@ -359,8 +359,8 @@ cat << EOF > etc/db.bind
 ;
 ; @(#)db.bind v1.2 25 JAN 2001 Team Cymru Thomas noc@cymru.com 
 ; 
-$TTL    1D 
-$ORIGIN bind. 
+\$TTL    1D 
+\$ORIGIN bind. 
 @       1D      CHAOS   SOA     localhost. root.localhost. ( 
                 2001013101      ; serial 
                 3H              ; refresh 
@@ -379,7 +379,7 @@ cat << EOF >etc/db.127.0.0
 ;
 ; db.127.0.0
 ;
-$TTL    86400
+\$TTL    86400
 @       IN      SOA     localhost. root.localhost.  (
                             1 ; Serial
                             28800      ; Refresh
@@ -547,8 +547,8 @@ cd etc
 mkdir master
 
 cat << EOF > /chroot/named/etc/master/db.homelab.local
-$ORIGIN homelab.local
-$TTL    604800
+\$ORIGIN homelab.local
+\$TTL    604800
 @       IN      SOA     ns1.homelab.local. admin.homelab.local. (
                               4         ; Serial
                          604800         ; Refresh
@@ -572,8 +572,8 @@ EOF
 
 
 cat << EOF > /chroot/named/etc/master/db.192.168.1
-$ORIGIN 1.168.192.in-addr.arpa.
-$TTL    604800
+\$ORIGIN 1.168.192.in-addr.arpa.
+\$TTL    604800
 @       IN      SOA     ns1.homelab.local. admin.homelab.local. (
                               2         ; Serial
                          604800         ; Refresh
