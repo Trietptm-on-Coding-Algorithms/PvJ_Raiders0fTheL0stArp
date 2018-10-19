@@ -142,7 +142,7 @@ options {
     notify no;
 
     // These are from the Men and Mice slideshare powerpoint.
-    // dnssec-validation auto; // Checks with DNSSEC... may not work?
+    dnssec-validation auto; // Checks with DNSSEC... may not work?
     minimal-responses yes;
     // minimal-any yes; // ENABLE if version 9.11 ...
 
@@ -206,7 +206,7 @@ view "internal-in" in {
     zone "." in { 
         // Link in the root server hint file. 
         type hint; 
-        file "/etc/db.rootcache";
+        file "db.rootcache";
 
         // this is often seen to be "db.root" or "db.rootcache"
         //  or "db.cache" .... use what we have 
