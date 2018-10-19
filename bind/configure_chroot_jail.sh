@@ -82,10 +82,8 @@ acl "trusted" {
     // intranet and DMZ clients may send DNS queries.  This 
     // also prevents outside hosts from using our name server 
     // as a resolver for other domains. 
-    172.16.137.0/24; 
-    172.16.137.30;
+    172.16.137.0/24;
     localhost;
-    127.0.0.1; 
 };
 
 logging {
@@ -208,7 +206,7 @@ view "internal-in" in {
     zone "." in { 
         // Link in the root server hint file. 
         type hint; 
-        file "db.rootcache";
+        file "/etc/db.rootcache";
 
         // this is often seen to be "db.root" or "db.rootcache"
         //  or "db.cache" .... use what we have 
@@ -232,7 +230,7 @@ view "internal-in" in {
 
     zone "localhost" {
        type master;
-       file "db.localhost";
+       file "/etc/db.localhost";
         allow-query { 
             any; 
         };
