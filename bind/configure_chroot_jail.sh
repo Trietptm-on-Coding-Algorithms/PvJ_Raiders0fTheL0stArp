@@ -476,45 +476,6 @@ chown root:named  logs/
 chmod ug=rwx,o=rx logs/
 
 
-  # zone "0.0.127.in-addr.arpa" in { 
-  #       // Allow queries for the 127/8 network, but not zone transfers. 
-  #       // Every name server, both slave and master, will be a master 
-  #       // for this zone. 
-  #       type master; 
-  #       file "master/db.127.0.0";
-
-  #       allow-query { 
-  #           any; 
-  #       };
-
-  #       allow-transfer { 
-  #           none; 
-  #       }; 
-  #   };
-
-  #   zone "localhost" {
-  #      type master;
-  #      file "db.localhost";
-  #       allow-query { 
-  #           any; 
-  #       };
-
-  #       allow-transfer { 
-  #           none;
-  #      };
-  #   };
-
-  #   zone "internal.example.com" in { 
-  #       // Our internal A RR zone. There may be several of these. 
-  #       type master; 
-  #       file "master/db.internal"; 
-  #   };
-
-  #   zone "1.168.192.in-addr.arpa" in { 
-  #       // Our internal PTR RR zone. Again, there may be several of these. 
-  #       type master; 
-  #       file "master/db.192.168.1"; 
-  #   };
 
 
 ########### Now trying to create A records... 
