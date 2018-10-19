@@ -125,6 +125,9 @@ logging {
 
 
 options {
+
+    listen-on { 172.16.137.30; };
+
     directory       "/conf";
     pid-file        "/var/run/named.pid";
     statistics-file "/var/run/named.stats";
