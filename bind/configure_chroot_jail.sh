@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+if [ "$UID" != "0" ] then
+    echo "You must run this script as root!"
+    exit
+fi
+
 #-----------------------------------------------------
 
 #### This is just ripped from http://www.unixwiz.net/techtips/bind9-chroot.html
