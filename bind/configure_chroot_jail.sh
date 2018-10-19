@@ -219,7 +219,7 @@ view "internal-in" in {
         // Every name server, both slave and master, will be a master 
         // for this zone. 
         type master; 
-        file "master/db.127.0.0";
+        file "/etc/master/db.127.0.0";
 
         allow-query { 
             any; 
@@ -245,14 +245,14 @@ view "internal-in" in {
     zone "homelab.local" in { 
         // Our internal A RR zone. There may be several of these. 
         type master; 
-        file "master/db.homelab.local"; 
+        file "/etc/master/db.homelab.local"; 
     };
 
     //172.16.137.
     zone "137.16.172.in-addr.arpa" in { 
         // Our internal PTR RR zone. Again, there may be several of these. 
         type master; 
-        file "master/db.172.16.137"; 
+        file "/etc/master/db.172.16.137"; 
     };
 };
 
@@ -275,7 +275,7 @@ view "external-in" in {
     };
     zone "example.net" in { 
         type master; 
-        file "master/db.example";
+        file "/etc/master/db.example";
 
         allow-query { 
             any; 
@@ -505,11 +505,9 @@ cat << EOF > /chroot/named/etc/master/db.homelab.local
 ;
 ; name servers - NS records
 homelab.local.        IN      NS      ns1.homelab.local.
-homelab.local.        IN      NS      ns2.homelab.local.
 ;
 ; name servers - A records
-ns1.homelab.local.          IN      A       172.16.137.41  
-ns2.homelab.local.          IN      A       172.16.137.42  
+ns1.homelab.local.          IN      A       172.16.137.30   
 ;
 ; 10.1.100.0/24 - A records
 host1.homelab.local.        IN      A       172.16.137.90  
@@ -529,11 +527,9 @@ cat << EOF > /chroot/named/etc/master/db.172.16.137
 ;
 ; name servers - NS records
         IN      NS      ns1.homelab.local.
-        IN      NS      ns2.homelab.local.
 ;
 ; PTR Records
-41      IN      PTR     ns1.homelab.local.    ; 172.16.137.41  
-42      IN      PTR     ns2.homelab.local.    ; 172.16.137.42  
+30      IN      PTR     ns1.homelab.local.    ; 172.16.137.30  
 90      IN      PTR     host1.homelab.local.  ; 172.16.137.90  
 91      IN      PTR     host2.homelab.local.  ; 172.16.137.91  
 EOF
