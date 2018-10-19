@@ -547,6 +547,7 @@ cd etc
 mkdir master
 
 cat << EOF > /chroot/named/etc/master/db.homelab.local
+$ORIGIN homelab.local
 $TTL    604800
 @       IN      SOA     ns1.homelab.local. admin.homelab.local. (
                               4         ; Serial
@@ -571,6 +572,7 @@ EOF
 
 
 cat << EOF > /chroot/named/etc/master/db.192.168.1
+$ORIGIN 1.168.192.in-addr.arpa.
 $TTL    604800
 @       IN      SOA     ns1.homelab.local. admin.homelab.local. (
                               2         ; Serial
