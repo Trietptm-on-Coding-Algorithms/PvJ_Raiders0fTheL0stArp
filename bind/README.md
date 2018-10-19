@@ -65,6 +65,8 @@ minimal any
 
 Slide 34 out of 60
 
+__THIS IS ONLY AVAILABLE ON 9.11. IF WE HAVE 9.11, DEFINITELY ADD THIS__
+
 > starting with BIND 9.11, BIND 9 can be configured to only return the first entry of a matching ANY query
 > 
 > this mitigates the problem without causing (too much) breakage of older software (qmail etc)

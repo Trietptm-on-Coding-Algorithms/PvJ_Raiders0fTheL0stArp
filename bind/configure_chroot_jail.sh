@@ -142,7 +142,7 @@ options {
     // These are from the Men and Mice slideshare powerpoint.
     dnssec-validation auto; // Checks with DNSSEC... may not work?
     minimal-responses yes;
-    minimal-any yes;
+    // minimal-any yes; // ENABLE if version 9.11 ...
 
 
     // Generate more efficient zone transfers.  This will place 
