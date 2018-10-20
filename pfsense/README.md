@@ -13,6 +13,7 @@ admin:pfsense
 
 --------------
 
+0. UPDATE THE BOX.
 1. Change default password.
 2. Check the rules already set up.
 
