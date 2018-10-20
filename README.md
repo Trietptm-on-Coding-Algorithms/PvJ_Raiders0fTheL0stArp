@@ -17,7 +17,7 @@ The Team
 6. __Girish Mukhi [G1d30n]__ - Security analyst.
 7. __Carlos Embury [papadynamite]__ - 
 8. __Shohn__ - Cisco's cyber ops. Experienced with Linux, Powershell & Python.
-9. __TJ Null__ 
+9. __Olivia__ - AWS, JavaScript. 
 10. __John Hammond__ - Coast Guard security tester. 
 
 
