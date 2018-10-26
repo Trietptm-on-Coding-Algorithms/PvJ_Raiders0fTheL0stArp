@@ -1662,12 +1662,14 @@ fi
 erik_package_checks(){
 
     echo -e "\e[00;33m[+] Checking packages by Erik's methodology:\e[00m\n" 
-    for i in /etc/init.d/*; do if $(yum provides "${i}") &>/dev/null;
-    then
-        echo ${i} $(yum provides "${i}" |grep x86 |head -1|awk '{print $1}'); done |sort |uniq -c
-    else
-        echo ${i} not found in package, warning
-    fi
+    for i in /etc/init.d/*
+    do
+       if $(yum provides "${i}") &>/dev/null;
+      then
+          echo ${i} $(yum provides "${i}" |grep x86 |head -1|awk '{print $1}') |sort |uniq -c
+      else
+          echo ${i} not found in package, warning
+      fi
     done
 }
 

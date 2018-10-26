@@ -782,9 +782,9 @@ function create_shell_timeout(){
 
     # This function is COMPLETE AND TESTED
 
-    echo "$FUNCNAME: ${GREEN}Creating a 5 second timeout for the shell...${NC}"
+    echo "$FUNCNAME: ${GREEN}Creating a 300 second timeout for the shell...${NC}"
     cat <<EOF > /etc/profile.d/tmout.sh
-TMOUT=5
+TMOUT=300
 readonly TMOUT
 export TMOUT
 EOF
