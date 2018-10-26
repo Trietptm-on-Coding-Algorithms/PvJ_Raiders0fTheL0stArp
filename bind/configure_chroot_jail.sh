@@ -135,7 +135,9 @@ logging {
 options {
 
     // listen-on { 172.16.137.30; };
-    listen-on { any; }; // Accept local connections too!
+    listen-on port 5353 { any; }; // Accept local connections too!
+
+    
 
     directory       "/conf";
     pid-file        "/var/run/named.pid";
