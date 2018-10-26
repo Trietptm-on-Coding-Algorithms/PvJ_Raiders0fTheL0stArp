@@ -1,0 +1,16 @@
+subprocess
+Popen
+os.system
+passthru
+eval
+exec
+require('child_process')
+nc
+shell
+bash
+/bin/bash
+dash
+sh
+reverse
+pwn
+revshell

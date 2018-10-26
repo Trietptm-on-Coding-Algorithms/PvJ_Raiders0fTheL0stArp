@@ -1661,17 +1661,27 @@ fi
 
 erik_package_checks(){
 
-    echo -e "\e[00;33m[+] Checking packages by Erik's methodology:\e[00m\n" 
+    echo -e "\e[00;33m[+] Checking Red Hat packages by Erik's methodology:\e[00m\n" 
     for i in /etc/init.d/*
     do
-       if $(yum provides "${i}") &>/dev/null;
+
+      if yum provides "${i}" | grep -i "No matches" >/dev/null;
       then
-          echo ${i} $(yum provides "${i}" |grep x86 |head -1|awk '{print $1}') |sort |uniq -c
-      else
+        echo -ne "\e[01;31m[+] bad package: "
           echo ${i} not found in package, warning
+          echo -ne "\e[00m"
+      else
+          echo -n "good package: "
+          echo ${i} $(yum provides "/etc/init.d/${i}" |grep x86 |head -1|awk '{print $1}') |sort |uniq -c
       fi
     done
+
+
+    echo -e "\e[00;33m[+] Checking Debian packages by Erik's methodology:\e[00m\n" 
+    for i in $(dpkg -l); do debsums -a $i 2>/dev/null | grep -v "OK$" | while read line; do echo -e "\e[01;31m[+] bad package: $line \e[00m"; done; done
 }
+
+
 
 erik_process_checks(){
 

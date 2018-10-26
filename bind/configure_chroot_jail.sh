@@ -6,6 +6,14 @@ then
     exit
 fi
 
+echo "What subnet are you working in? (CIDR notation)"
+subnet=$(read)
+
+echo "What zone do you want? (Like raiders.com)"
+zone=$(read)
+
+
+
 #-----------------------------------------------------
 
 #### This is just ripped from http://www.unixwiz.net/techtips/bind9-chroot.html
@@ -82,7 +90,8 @@ acl "trusted" {
     // intranet and DMZ clients may send DNS queries.  This 
     // also prevents outside hosts from using our name server 
     // as a resolver for other domains. 
-    172.16.137.0/24;
+    // 172.16.137.0/24; // original subnet
+    $subnet;
     localhost;
 };
 
