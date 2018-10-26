@@ -10,10 +10,19 @@ Installing `git`:
 yum update -y nss curl libcurl git
 ```
 
+Priority
+------------------
+
+1. Run `LinEnum.sh | tee -a enum_log.txt` 
+2. Run `monitor.sh` on `lsof`, `netstat`, `sudo -l/etc/sudoers`, `ps aux`, `/etc/passwd`, `/etc/shadow`
+3. Run harden scripts
+4. 
 
 
 Toolkit
 --------
+
+* `rkhunter`: [https://github.com/installation/rkhunter](https://github.com/installation/rkhunter)
 
 * `maldet`: [https://github.com/rfxn/linux-malware-detect](https://github.com/rfxn/linux-malware-detect)
 
