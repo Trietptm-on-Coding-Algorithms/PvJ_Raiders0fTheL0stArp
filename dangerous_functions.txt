@@ -29,3 +29,6 @@ chmod
 chown
 alias
 socket
+db
+database
+root

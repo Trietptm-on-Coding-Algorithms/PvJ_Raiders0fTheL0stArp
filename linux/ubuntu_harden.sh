@@ -829,7 +829,7 @@ function install_selinux(){
         ifdown eth1
         ifup eth1
         
-        apt-get -y install selinux-basics
+        apt-get -y install selinux-basics policycoreutils
 
         ifdown eth1
         ifdown eth0
