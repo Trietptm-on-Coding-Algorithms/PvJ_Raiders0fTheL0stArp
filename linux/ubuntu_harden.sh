@@ -622,6 +622,8 @@ function set_umask_to_027(){
     echo "$FUNCNAME: ${GREEN}Setting global umask to 027 in /etc/login.defs...${NC}"
 
     sed -i "s/UMASK.\*/UMASK\ \ \ \ \ \ \ \ \ \ \ 027/g" /etc/login.defs
+
+    sed -i 's/umask 002/umask 027/g' /etc/profile
 }
 
 
